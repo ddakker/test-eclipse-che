@@ -34,7 +34,7 @@ commands:
       label: "Build"
       component: tools
       workingDir: ${PROJECT_SOURCE}
-      commandLine: gradle build
+      commandLine: ./gradlew build
       group:
         kind: build
   - id: 2-run
@@ -42,6 +42,6 @@ commands:
       label: "Run application"
       component: tools
       workingDir: ${PROJECT_SOURCE}
-      commandLine: gradle bootRun
+      commandLine: ./gradlew bootRun
       group:
         kind: run
