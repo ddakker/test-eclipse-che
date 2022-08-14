@@ -1,0 +1,47 @@
+schemaVersion: 2.1.0
+metadata:
+  name: java-gradle
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8:3.0
+      memoryLimit: 4Gi
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: input-form-endpoint
+          protocol: http
+          targetPort: 8080
+      env:
+        - name: GRADLE_USER_HOME
+          value: /home/user/.gradle
+      volumeMounts:
+        - name: gradle
+          path: /home/jboss/.gradle
+      mountSources: true
+  - name: m2
+    volume:
+      size: 1G
+  - name: gradle
+    volume:
+      size: 1G
+commands:
+  - id: 1-build
+    exec:
+      label: "Build"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: gradle build
+      group:
+        kind: build
+  - id: 2-run
+    exec:
+      label: "Run application"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: gradle bootRun
+      group:
+        kind: run
