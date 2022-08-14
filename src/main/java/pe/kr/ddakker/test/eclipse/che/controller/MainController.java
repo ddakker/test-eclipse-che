@@ -1,11 +1,11 @@
 package pe.kr.ddakker.test.eclipse.che.controller;
 
-import org.springframework.stereotype.RestController;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 
-@RestController
+@Controller
 public class MainController {
 
     @GetMapping("/")
