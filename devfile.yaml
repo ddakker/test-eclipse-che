@@ -33,7 +33,7 @@ commands:
     exec:
       label: "Build"
       component: tools
-      workingDir: ${PROJECTS_ROOT}
+      workingDir: ${PROJECT_SOURCE}
       commandLine: gradle build
       group:
         kind: build
@@ -41,7 +41,7 @@ commands:
     exec:
       label: "Run application"
       component: tools
-      workingDir: ${PROJECTS_ROOT}
+      workingDir: ${PROJECT_SOURCE}
       commandLine: gradle bootRun
       group:
         kind: run
