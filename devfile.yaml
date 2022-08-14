@@ -34,7 +34,7 @@ commands:
       label: "Build"
       component: tools
       workingDir: ${PROJECT_SOURCE}
-      commandLine: ./gradlew build
+      commandLine: chmod 755 gradlew && ./gradlew build
       group:
         kind: build
   - id: 2-run
